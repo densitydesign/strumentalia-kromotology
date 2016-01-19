@@ -111,8 +111,10 @@ router.get('/single', function(req, res) {
 
      processImg(img, k,function(r){
             if(r) {
-                r.url = img;
-                res.json(r);
+                var obj = {};
+                obj.url = img;
+                obj.clusters = r;
+                res.json(obj);
             }
          else res.send("error!")
         });
@@ -126,8 +128,10 @@ router.post('/single',function(req,res){
     console.log(img,k);
     processImg(img,k,function(r){
         if(r) {
-            r.url = img;
-            res.json(r);
+            var obj = {};
+            obj.url = img;
+            obj.clusters = r;
+            res.json(obj);
         }
         else res.send("error!")
     })
