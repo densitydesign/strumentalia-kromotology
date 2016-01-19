@@ -95,8 +95,7 @@ app.use(bodyParser.json());
 
 //set port
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-
-
+var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 // routes
 var router = express.Router();
@@ -129,6 +128,8 @@ app.use('/', router);
 
 
 // start the server
-app.listen(port);
-//console.log('Server started! At http://localhost:' + port);
+app.listen(port,ip, function () {
+    console.log( "Listening on " + ip + ", server_port " + port )
+});
+
 

@@ -2,10 +2,10 @@
   "name": "kmeanskolor",
   "version": "1.0.0",
   "description": "image dominant colors extractor and classifier",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
+  "main": "index.js",
   "author": "Daniele Ciminieri",
   "license": "ISC",
   "dependencies": {
