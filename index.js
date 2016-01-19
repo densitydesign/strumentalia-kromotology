@@ -103,8 +103,13 @@ var port = 8080;
 var router = express.Router();
 
 // test route (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-     processImg('sample.jpg', 5,function(r){
+router.get('/single', function(req, res) {
+
+    var img = req.param('img');
+    var k = req.param('k');
+
+
+     processImg(img, k,function(r){
             if(r) {
                 res.json(r);
             }
@@ -118,14 +123,26 @@ router.post('/single',function(req,res){
     var img = JSON.parse(req.body.img);
     var k = JSON.parse(req.body.k);
     console.log(img,k);
-    processImg(img,k,function(a){
-        res.json(a);
+    processImg(img,k,function(r){
+        if(r) {
+            res.json(r);
+        }
+        else res.send("error!")
     })
-})
+});
 
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
+app.use(allowCrossDomain);
 app.use('/', router);
 
 
