@@ -41,6 +41,7 @@ var processImg = function (imgurl, nclust, callback) {
     lwip.open(fname, function (err, image) {
 
         if (err) {
+            console.log(err);
             callback(null);
             return null;
         }
@@ -60,6 +61,7 @@ var processImg = function (imgurl, nclust, callback) {
         kmeans.clusterize(vectors, {k: nclust}, function (err,res) {
 
             if (err) {
+                console.log(err);
                 callback(null);
                 return null;
             }
