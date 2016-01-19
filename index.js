@@ -111,6 +111,7 @@ router.get('/single', function(req, res) {
 
      processImg(img, k,function(r){
             if(r) {
+                r.url = img;
                 res.json(r);
             }
          else res.send("error!")
@@ -125,6 +126,7 @@ router.post('/single',function(req,res){
     console.log(img,k);
     processImg(img,k,function(r){
         if(r) {
+            r.url = img;
             res.json(r);
         }
         else res.send("error!")
