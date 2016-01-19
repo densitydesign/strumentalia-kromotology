@@ -1,0 +1,6 @@
+<h1>Kmeanscolor</h1>
+<p>{{appName}} is a tool able to run the <a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank">k-means</a> algorithm on images.
+  Just give an URL and the amount of cluster, then this wonderful web-based application will do the rest.</p>
+<input #imgUrl>
+<input #k>
+<button (click)="callKmean(imgUrl.value, k.value)">Go!</button>
