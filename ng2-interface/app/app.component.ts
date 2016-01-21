@@ -9,7 +9,7 @@ import {Component} from 'angular2/core';
 })
 export class AppComponent {
 
-  public api = new callApi(new BaseServer("http://131.175.56.235:8080"))
+  // public api = new callApi(new BaseServer("http://131.175.56.235:8080"))
 
   public callKmean = function(imgUrl, k){
     console.log(imgUrl,k);
@@ -23,4 +23,3 @@ export class AppComponent {
 
 //call this way
 //http://131.175.56.235:8080/single/?img=http://www.gstatic.com/webp/gallery/2.jpg&k=5
-  
