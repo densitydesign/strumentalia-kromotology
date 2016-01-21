@@ -1,4 +1,5 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', './_baseServer', './callApi'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,16 +9,23 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, _baseServer_1, callApi_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (_baseServer_1_1) {
+                _baseServer_1 = _baseServer_1_1;
+            },
+            function (callApi_1_1) {
+                callApi_1 = callApi_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.api = new callApi_1.callApi(new _baseServer_1.BaseServer("http://131.175.56.235:8080"));
                     this.callKmean = function (imgUrl, k) {
                         console.log(imgUrl, k);
                     };
@@ -30,9 +38,11 @@ System.register(['angular2/core'], function(exports_1) {
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
-            })();
+            }());
             exports_1("AppComponent", AppComponent);
         }
     }
 });
+//call this way
+//http://131.175.56.235:8080/single/?img=http://www.gstatic.com/webp/gallery/2.jpg&k=5
 //# sourceMappingURL=app.component.js.map

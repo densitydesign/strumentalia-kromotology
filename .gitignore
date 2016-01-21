@@ -36,5 +36,6 @@ node_modules
 # idea files
 .idea
 
-#typescript files
-.ts
+#compiled files
+*.js
+*.map
