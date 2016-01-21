@@ -4,3 +4,17 @@
 <input #imgUrl>
 <input #k>
 <button (click)="callKmean(imgUrl.value, k.value)">Go!</button>
+<div *ngIf="mydata">
+
+  <img src="{{mydata.url}}"/>
+
+
+
+<div class="color-cont">
+  <!--<div  class="color" *ngFor="#color of mydata.clusters" *ngStyle="{'background-color':'rgb('+color.rgb[0]+','+color.rgb[1]+','+color.rgb[2]+')','width':color.perc+'%'}">-->
+  <div  class="color" *ngFor="#color of mydata.clusters" [ngStyle]="{'background-color':'rgb('+color.rgb[0]+','+color.rgb[1]+','+color.rgb[2]+')','width':color.perc+'%'}">
+
+  </div>
+</div>
+
+</div>
