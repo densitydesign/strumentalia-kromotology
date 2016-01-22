@@ -1,0 +1,80 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+ font-family: 'Paytone One', sans-serif;
+ font-size: 48px;
+ letter-spacing: 3px;
+ color: #FA5E47;
+ text-transform: uppercase;
+ margin-bottom: 30px;
+}
+
+h4 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+header {
+  background-color: #E4E9EB;
+  padding: 60px 0px;
+}
+
+section {
+  padding-top: 30px;
+}
+
+input, textarea {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 14px;
+}
+
+.input-box {
+  margin-bottom: 30px;
+}
+
+.input-box h4 {
+  padding-left: 10px;
+}
+
+.input-box input, .input-box textarea, .input-box button, .resizeBox {
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid #979797;
+  padding: 15px 20px;
+  width: 100%;
+}
+
+.resizeBox {
+  padding: 0 0 0px 8px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox input {
+  height: auto;
+}
+
+.input-box textarea {
+  height: 200px;
+}
+
+.input-box i.fa {
+  font-size: 20px;
+}
+
+.color-cont {
+  margin-top: 50px;
+  border: 1px solid green;
+}
+
+.color-cont .color {
+  border: 1px solid grey;
+}
+
+.resizeBox {
+  border: 0px solid #979797;
+}

@@ -13,9 +13,10 @@ import {NgStyle} from 'angular2/common';
     ]
 })
 export class AppComponent {
-
+  public appName = "Kromotology"
      _http:Http;
-    mydata:{};
+    mydata = [];
+    temp:{};
 
     constructor(http: Http) {
         this._http = http;
@@ -39,9 +40,9 @@ export class AppComponent {
         return this._http.get(this._getFullUrl(name), {search: queryParams})
             //.map(res => res.json())
             .subscribe(
-                data => this.mydata = data,
+                data => this.temp = data,
                 err => console.log(err),
-                () => this.mydata = JSON.parse(this.mydata._body)
+                () => this.mydata.push(JSON.parse(this.temp._body))
             )
     }
 
@@ -50,7 +51,17 @@ export class AppComponent {
     }
 
     callKmean(imgUrl:string, k:number) {
-        this.get("/single",{img:imgUrl, k:k})
+        var listUrl = imgUrl.split("\n");
+        console.log(listUrl);
+        for(var i=0; i<listUrl.length; i++) {
+          if(listUrl[i] != "") {
+            this.get("/single",{img:listUrl[i], k:k})
+          } else {
+            console.log(listUrl[i], "is not a url");
+          }
+
+        }
+
     }
 
 }
