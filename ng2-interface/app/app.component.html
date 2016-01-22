@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-xs-12">
           <h1>{{appName}}</h1>
-          <p>Give <i>{{appName}}</i> an image and choose a numer of color cluster you want it to identify. It will analyse the picture pixel by pixel looking for group of similar tints in order to return you the percentage that color take in the image and its name.</p>
+          <p>Give <b>{{appName}}</b> an image and choose a numer of color cluster you want it to identify. It will analyse the picture pixel by pixel looking for group of similar tints in order to return you the percentage that color take in the image and its name.</p>
           <p>This tool is part of <a href="#">Strumentalia</a>. Code available on <a href="#">GitHub <i class="fa fa-github"></i></a>.</p>
           <p>{{appName}} is a tool able to run the <a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank">k-means</a> algorithm on images.
             Just give an URL and the amount of cluster, then this wonderful web-based application will do the rest.</p>
@@ -21,17 +21,17 @@
   <section class="container">
     <div class="row">
 
-      <div class="col-xs-8">
+      <div class="col-xs-9">
         <div class="input-box">
           <h4 class=""><!-- <i class="fa fa-link"></i> -->Paste here the list of image's URLs</h4>
           <textarea #imgUrl class="" type="text-area" name="imgUrl" id="imgUrl" placeholder="One URL each line" required></textarea>
         </div>
       </div>
 
-      <div class="col-xs-4">
+      <div class="col-xs-3">
 
         <div class="input-box">
-          <h4 class=""><!-- <i class="fa fa-th"></i> -->Number of clusters</h4>
+          <h4 class=""><!-- <i class="fa fa-th"></i> -->N° of clusters</h4>
           <p><input #k class="" type="text" name="imgUrl" id="imgUrl" placeholder="N° Cluster" value="5" required></p>
         </div>
         <div class="input-box">
@@ -47,7 +47,7 @@
       </div>
 
     </div>
-    <div class="row">
+    <div *ngIf="!mydata.length" class="row">
       <div class="input-box col-xs-12">
         <button type="submit" class="btn btn-default" (click)="callKmean(imgUrl.value, k.value)">Go!</button>
       </div>
@@ -56,20 +56,28 @@
   </section>
 
   <section class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>Results</h2>
-        <div *ngIf="mydata">
-        <div *ngFor="#img of mydata">
-          <img src="{{img.url}}"/>
-
+    <div *ngIf="mydata.length">
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>Results ({{mydata.length}}/{{listUrl.length}} parsed)</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-1" *ngFor="#img of mydata">
+          <!-- <img class="img-responsive" src="{{img.url}}"/> -->
           <div class="color-cont">
             <!--<div  class="color" *ngFor="#color of mydata.clusters" *ngStyle="{'background-color':'rgb('+color.rgb[0]+','+color.rgb[1]+','+color.rgb[2]+')','width':color.perc+'%'}">-->
             <div  class="color" *ngFor="#color of img.clusters" [ngStyle]="{'background-color':'rgb('+color.rgb[0]+','+color.rgb[1]+','+color.rgb[2]+')','width':color.perc+'%'}">
-
             </div>
           </div>
-          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input box col-xs-6">
+          <button type="submit" class="btn btn-default">Download SVG</button>
+        </div>
+        <div class="input box col-xs-6">
+          <button type="submit" class="btn btn-default">Download CSV</button>
         </div>
       </div>
     </div>

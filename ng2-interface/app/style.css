@@ -48,10 +48,20 @@ input, textarea {
   width: 100%;
 }
 
+.input-box button {
+  background-color: #fff;
+}
+
+.input-box button:hover {
+  background-color: #E4E9EB;
+}
+
 .resizeBox {
   padding: 0 0 0px 8px;
   display: flex;
   align-items: center;
+  font-family: 'Cutive Mono', monospace;
+  font-size: 14px;
 }
 
 .checkbox input {
@@ -67,12 +77,19 @@ input, textarea {
 }
 
 .color-cont {
-  margin-top: 50px;
-  border: 1px solid green;
+  padding-bottom: 85%;
+  overflow: hidden;
+  height: 0px;
+  border: 0px solid #979797;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px #999;
 }
 
 .color-cont .color {
-  border: 1px solid grey;
+  height:500px;
+  display:block;
+  float:left;
 }
 
 .resizeBox {
