@@ -1,0 +1,22 @@
+{
+  "name": "kmeanskolor",
+  "description": "",
+  "main": "",
+  "authors": [
+    "iosonosempreio <tommaso.elli@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/densitydesign/kmeanskolor",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "FileSaver.js": "~0.0.2"
+  }
+}
