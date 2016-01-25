@@ -69,6 +69,12 @@ var processImg = function (imgurl, nclust, orig, callback) {
             }
         }
 
+
+        batch.exec(function(err, image){
+
+
+        console.log(orig,image.width(), image.height());
+
         if (err) {
             console.log(err);
             callback(null);
@@ -113,6 +119,8 @@ var processImg = function (imgurl, nclust, orig, callback) {
             fs.unlink(fname);
             callback(totres);
         })
+    });
+        // check err, use image
     });
     });
 };
@@ -194,8 +202,8 @@ var router = express.Router();
 // test route (accessed at GET http://localhost:8080/api)
 router.get('/single', function(req, res) {
 
-    var img = req.param('img');
-    var k = req.param('k');
+    var img = req.query.img;
+    var k = req.query.k;
     var orig = false;
 
     if('orig' in req.query && req.query.orig) {
