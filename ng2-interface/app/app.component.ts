@@ -14,6 +14,7 @@ export class AppComponent {
   temp:{};
   listUrlRaw = [];
   listUrl = [];
+  percentageDone = 0;
 
   constructor(http: Http) {
       this._http = http;
@@ -47,8 +48,29 @@ export class AppComponent {
       return this._http.post(this._getFullUrl(name), JSON.stringify(data), requestOptions).map((res: any) => res.json());
   }
 
+  resetForms() {
+    this.mydata = [];
+    this.listUrlRaw = [];
+    this.listUrl = [];
+    //imgUrl.value = "";
+  }
+
+  getDataCSV() {
+    console.log(this.mydata);
+    var csvtxt = 'id\timgUrl\tcolorName\tpercentage\thexadecimal\n';
+    this.mydata.forEach(function(img,i){
+      img.clusters.forEach(function(k){
+        var hexString = '#' + k.rgb[0].toString(16) + k.rgb[1].toString(16) + k.rgb[2].toString(16);
+        csvtxt+=(i + '\t' + img.url +'\t'+ k.label +'\t'+ k.perc +'\t'+ hexString.toUpperCase() +'\n');
+      })
+    })
+    var blob = new Blob([csvtxt], { type: 'data:text/csv;charset=utf-8' });
+            saveAs(blob, 'seealsology-data.tsv');
+  }
+
   callKmean(imgUrl:string, k:number) {
-      this.mydata = []
+      this.mydata = [];
+      this.listUrlRaw = [];
       this.listUrlRaw = imgUrl.split("\n");
       for(var i=0; i<this.listUrlRaw.length; i++) {
         if(this.listUrlRaw[i] != "") {
@@ -59,6 +81,8 @@ export class AppComponent {
       for(var i=0; i<this.listUrl.length; i++) {
         if(this.listUrl[i] != "") {
           this.get("/single",{img:this.listUrl[i], k:k})
+          this.percentageDone = 100*this.mydata.length/this.listUrl.length;
+          window.scrollTo(0, document.body.scrollHeight);
         } else {
           console.log(this.listUrl[i], "is not a url");
         }
