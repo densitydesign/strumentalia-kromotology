@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kmeanskolor - viz</title>
+    <style>
+        body{
+            margin:30px;
+            font-family:Helvetica,Arial;
+        }
+        img{
+            display:block;
+            margin-bottom:20px;
+            max-width:100%;
+        }
+        .clusters{
+            width:100%;
+        }
+        .clust{
+            height:15px;
+            display:block;
+            float:left;
+            padding:5px 0;
+            font-weight:bold;
+            color:white;
+        }
+        .clust:before{
+            content:" ";
+        }
+    </style>
+</head>
+<body>
+
+<div id=main>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+
+    var data =
+    {
+        "url": "https://bluedoorbeads.files.wordpress.com/2012/12/newlin.jpg",
+        "clusters": [
+            {
+                "label": "Sandstorm",
+                "perc": 10.034384645061728,
+                "rgb": [
+                    234,
+                    209,
+                    75
+                ]
+            },
+            {
+                "label": "Blue Gray",
+                "perc": 14.84230324074074,
+                "rgb": [
+                    94,
+                    159,
+                    203
+                ]
+            },
+            {
+                "label": "Dark sienna",
+                "perc": 41.09847608024692,
+                "rgb": [
+                    59,
+                    15,
+                    24
+                ]
+            },
+            {
+                "label": "Dark byzantium",
+                "perc": 17.76586612654321,
+                "rgb": [
+                    81,
+                    62,
+                    106
+                ]
+            },
+            {
+                "label": "Medium carmine",
+                "perc": 16.25896990740741,
+                "rgb": [
+                    176,
+                    69,
+                    40
+                ]
+            }
+        ]
+    }
+
+
+    $("#main").append("<img class='myimg' src='"+data.url+"'/>");
+    $("#main").append("<div class='clusters'></div>");
+    for(i in data.clusters) {
+        $(".clusters").append("<div style='width:"+data.clusters[i].perc+"%; background:rgb("+data.clusters[i].rgb[0]+","+data.clusters[i].rgb[1]+","+data.clusters[i].rgb[2]+")' class='clust'> "+data.clusters[i].label+"</div>");
+    }
+
+
+</script>
+
+</body>
+</html>
