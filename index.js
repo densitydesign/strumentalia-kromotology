@@ -22,6 +22,7 @@ var maxSize=200;
 //*******************************************
 var download = function(uri, filename, callback){
     request.head(uri, function(err, res, body){
+        callback(err);
         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
     });
 };
@@ -53,10 +54,17 @@ var processImg = function (imgurl, nclust, orig, callback) {
     var vectors = new Array();
 
 
-    download(imgurl, fname, function(){
+    download(imgurl, fname, function(dlerr){
+
+        if(dlerr) {
+            callback(null);
+            return null;
+        }
+
 
     //open image, sync fashion
     lwip.open(fname, function (err, image) {
+
 
         var batch = image.batch();
 
