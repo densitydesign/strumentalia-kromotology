@@ -10,35 +10,78 @@ var kmeans = require('node-kmeans');
 var lwip = require('lwip');
 var request = require('request');
 var fs = require('fs');
+var clustering = require('density-clustering');
+var optics = new clustering.DBSCAN();
 
 //load initial dataset of colors
 classifier.getdb('dataset.js');
 
+var maxSize=200;
 //*******************************************
 // function for downloading an image from url
 //*******************************************
 var download = function(uri, filename, callback){
     request.head(uri, function(err, res, body){
+        callback(err);
         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
     });
 };
+
+
+//*******************************************
+// function to find average of averages :)
+//*******************************************
+function average(x) {
+
+    // Flatten multi-dimensional array
+    while (x[0] instanceof Array) {
+        x = x.reduce( function(a, b) { return a.concat(b); } );
+    }
+
+    // Calculate average
+    return x.reduce( function(a, b) { return a + b; } )/x.length;
+}
 
 
 //*************************************************
 // function for clustering and color classification
 //*************************************************
 
-var processImg = function (imgurl, nclust, callback) {
+var processImg = function (imgurl, nclust, orig, callback) {
 
     var totres = [];
     var fname = imgurl.split("/").pop();
     var vectors = new Array();
 
 
-    download(imgurl, fname, function(){
+    download(imgurl, fname, function(dlerr){
+
+        if(dlerr) {
+            callback(null);
+            return null;
+        }
+
 
     //open image, sync fashion
     lwip.open(fname, function (err, image) {
+
+
+        var batch = image.batch();
+
+
+        if(!orig) {
+            var m = Math.max(image.width(), image.height());
+            if(m>maxSize) {
+                var ratio = maxSize / m;
+                batch.resize(image.width()*ratio, image.height()*ratio);
+            }
+        }
+
+
+        batch.exec(function(err, image){
+
+
+        console.log(orig,image.width(), image.height());
 
         if (err) {
             console.log(err);
@@ -85,8 +128,70 @@ var processImg = function (imgurl, nclust, callback) {
             callback(totres);
         })
     });
+        // check err, use image
+    });
     });
 };
+
+/*
+var processImgOptics = function (imgurl, dense, callback) {
+
+    var totres = [];
+    var fname = imgurl.split("/").pop();
+    var vectors = new Array();
+
+
+    download(imgurl, fname, function(){
+
+        //open image, sync fashion
+        lwip.open(fname, function (err, image) {
+
+            if (err) {
+                console.log(err);
+                callback(null);
+                return null;
+            }
+
+            //total number of pixels
+            var tot = image.width() * image.height();
+
+            //prepare vector for kmeans
+            for (var i = 0; i < image.width(); i++) {
+                for (var j = 0; j < image.height(); j++) {
+                    var px = image.getPixel(i, j);
+                    vectors.push([px.r, px.g, px.b]);
+                }
+            }
+
+            //perform kmeans, sync fashion
+            var clusters = optics.run(vectors, dense, 2);
+
+                for (i in clusters) {
+                    console.log(clusters[i]);
+                    //classify clusters centroids
+                    var cent = average(clusters[i])
+                    console.log(cent);
+
+                    var obj = {}
+                    var lbl = classifier.classify(cent, false);
+
+                    //save centroid info
+                    obj.label = lbl;
+                    obj.perc = clusters[i].length / tot * 100;
+                    obj.rgb = cent.map(function (x) {
+                        return parseInt(x);
+                    });
+                    totres.push(obj)
+                }
+
+                //return json with info on centroids
+                fs.unlink(fname);
+                callback(totres);
+        });
+    });
+};
+
+*/
 
 //init app
 var app = express();
@@ -105,11 +210,21 @@ var router = express.Router();
 // test route (accessed at GET http://localhost:8080/api)
 router.get('/single', function(req, res) {
 
-    var img = req.param('img');
-    var k = req.param('k');
+    var img = req.query.img;
+    var k = req.query.k;
+    var orig = false;
+
+    if('orig' in req.query && req.query.orig) {
+        try {
+            orig = parseInt(req.query.orig)
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
 
 
-     processImg(img, k,function(r){
+     processImg(img, k,orig,function(r){
             if(r) {
                 var obj = {};
                 obj.url = img;
@@ -120,13 +235,40 @@ router.get('/single', function(req, res) {
         });
 });
 
+/*
+router.get('/optics', function(req, res) {
+
+    var img = req.param('img');
+    var k = req.param('k');
+
+    processImgOptics(img,function(r){
+        if(r) {
+            var obj = {};
+            obj.url = img;
+            obj.clusters = r;
+            res.json(obj);
+        }
+        else res.send("error!")
+    });
+});
+*/
 //route with list of images
 router.post('/single',function(req,res){
 
     var img = JSON.parse(req.body.img);
     var k = JSON.parse(req.body.k);
-    console.log(img,k);
-    processImg(img,k,function(r){
+    var orig = false;
+
+    if('orig' in req.body && req.body.orig) {
+        try {
+            orig = parseInt(req.body.orig)
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    processImg(img,k,orig,function(r){
         if(r) {
             var obj = {};
             obj.url = img;
