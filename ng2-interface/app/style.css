@@ -1,5 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  color: #4a4a4a;
 }
 
 h1 {
@@ -24,6 +25,11 @@ h4 {
   padding-right: 10px;
 }
 
+a {
+  color: #FA5E47;
+  font-weight: 700;
+}
+
 header {
   background-color: #E4E9EB;
   padding: 60px 0px;
@@ -36,6 +42,20 @@ section {
 input, textarea {
   font-family: 'Cutive Mono', monospace;
   font-size: 14px;
+}
+
+.examples {
+  margin: 20px 0;
+}
+
+.examples i {
+  margin: 20px;
+}
+
+.examples img {
+  height: 100px;
+  width: auto;
+  border-radius: 2px;
 }
 
 .input-box {
@@ -54,11 +74,13 @@ input, textarea {
   width: 100%;
 }
 
-.input-box button {
-  background-color: #fff;
+.input-box button.go {
+  background-color: rgba(228,233,235,0.7);
+  border:none;
+  border-bottom: 4px solid #E4E9EB;
 }
 
-.input-box button:hover {
+.input-box button.go:hover {
   background-color: #E4E9EB;
 }
 
@@ -138,4 +160,28 @@ input, textarea {
 
 .pointer {
   cursor: pointer;
+}
+
+.progress-bar {
+  background-color: #EEBB22;
+}
+.progress-bar.progress-bar-danger {
+  background-color: #FA5E47;
+}
+
+.progress-bar.done {
+  background-color: #E4E9EB;
+  font-weight: 700;
+}
+
+.progress-bar.done span {
+  color: #4a4a4a;
+}
+
+
+footer {
+  background-color: #4a4a4a;
+  color: white;
+  padding: 30px 0;
+  border-top: 1px solid #a4a4a4;
 }

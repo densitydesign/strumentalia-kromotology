@@ -15,6 +15,7 @@
     "es6-shim": "^0.33.3",
     "font-awesome": "^4.5.0",
     "jQuery": "^1.7.4",
+    "ng2-bootstrap": "^1.0.1-beta.2",
     "reflect-metadata": "0.1.2",
     "rx": "^4.0.7",
     "rxjs": "5.0.0-beta.0",

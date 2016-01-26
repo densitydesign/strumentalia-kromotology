@@ -5,12 +5,21 @@
       <div class="row">
         <div class="col-xs-12">
           <h1>{{appName}}</h1>
-          <p>Give <b>{{appName}}</b> an image and choose a numer of color cluster you want it to identify. It will analyse the picture pixel by pixel looking for group of similar tints in order to return you the percentage that color take in the image and its name.</p>
-          <p> The data it returns it is similar to <a href="http://131.175.56.235:8080/single/?img=https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Mirop.jpg/173px-Mirop.jpg&k=5" target="_blank">this</a></p>
-          <p>This tool is part of <a href="#">Strumentalia</a>. Code available on <a href="#">GitHub <i class="fa fa-github"></i></a>.</p>
-          <p>{{appName}} is a tool able to run the <a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank">k-means</a> algorithm on images.
-            Just give an URL and the amount of cluster, then this wonderful web-based application will do the rest.</p>
-
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-xs-12">
+          <p><b>{{appName}}</b> is able to identify color cluster inside images, taken as inputs.</p>
+          <p>It analyses the images pixel by pixel (running a <a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank">k-means</a> algorithm), looking for group of similar tints and then it returns the names and the percentage of the colors discovered.</p>
+        </div>
+        <div class="col-xs-12 examples">
+          <img src="./app/img/example-img.jpg"/>
+            <i class="fa fa-arrow-circle-right" data-toggle="tooltip" data-placement="top" title="Tooltip on top" tooltip-placement="top" tooltip="Process 5 clusters."></i>
+          <img src="./app/img/example-flag.png"/>
+        </div>
+        <div class="col-xs-12">
+          <p>The amount of colors to be discovered is set to <b>5</b> by default, but it can be changed if you need more, just remember the higher this number, the slower the process gets.</p>
+          <p>Right now, SVG images will be skipped due to developing reasons.</p>
         </div>
       </div>
     </div>
@@ -20,104 +29,77 @@
     <div class="row">
       <div class="col-xs-9">
         <div class="input-box">
-          <h4 class=""><!-- <i class="fa fa-link"></i> -->Paste here the list of image's URLs</h4>
-          <textarea #imgUrl class="" type="text-area" name="imgUrl" id="imgUrl" placeholder="One URL each line" required>https://d304k3mn1nwj0a.cloudfront.net/meme/not-bad.png
-http://www.meme-italia.it/albums/userpics/11237/thumb_image.jpg
-http://www.saturdaydownsouth.com/wp-content/uploads/2015/08/vols2.jpg
-http://i2.kym-cdn.com/entries/icons/original/000/000/088/Gentlemen.jpg
-https://pbs.twimg.com/profile_images/639734878569922560/xYcLGjiD.jpg
-https://38.media.tumblr.com/avatar_a455f5f2e007_128.png
-https://38.media.tumblr.com/avatar_853ee75c49f7_128.png
-https://38.media.tumblr.com/avatar_77d85e2439e4_128.png
-http://1.bp.blogspot.com/-SGw8erxLMl0/TsKby3FAs4I/AAAAAAAAARc/3BjdzBhD28s/s1600/anonymous.png
-http://i1.kym-cdn.com/entries/icons/original/000/000/340/fyi.jpg
-</textarea>
+          <h4 class="">Paste here the list of image's URLs</h4>
+          <textarea #imgUrl class="" type="text-area" name="imgUrl" id="imgUrl" placeholder="One URL each line" required>{{sampleList}}</textarea>
         </div>
       </div>
       <div class="col-xs-3">
         <div class="input-box">
-          <h4 class=""><!-- <i class="fa fa-th"></i> -->N° of clusters</h4>
+          <h4 class="">N° of clusters</h4>
           <p><input #k class="" type="text" name="imgUrl" id="imgUrl" placeholder="N° Cluster" value="5" required></p>
         </div>
         <div class="input-box">
-          <h4 class=""><!-- <i class="fa fa-expand"></i> -->Resize images?</h4>
+          <h4 class="">Resize images?</h4>
           <div class="resizeBox">
             <div class="checkbox">
               <label>
-                <input type="checkbox" checked disabled> Yes
+                <input type="checkbox" name="resampleSwitch" checked disabled > Yes
               </label>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div *ngIf="!mydata.length" class="row">
+    <div *ngIf="!mydata.success.length" class="row">
       <div class="input-box col-xs-12">
-        <button type="submit" class="btn btn-default" (click)="callKmean(imgUrl.value, k.value)">Go!</button>
+        <button type="submit" class="btn btn-default go" (click)="callKmean(imgUrl.value, k.value)">Go!</button>
       </div>
     </div>
   </section>
 
-  <section class="container results" *ngIf="mydata.length">
-
+  <section class="container results" *ngIf="mydata.success.length || mydata.failed.length">
       <div class="row">
         <div class="col-xs-8">
-          <h4>Results ({{mydata.length}}/{{listUrl.length}} parsed)</h4>
+          <h4>Results ({{mydata.success.length+mydata.failed.length}}/{{listUrl.length}} parsed)</h4>
         </div>
         <div class="col-xs-4 right ">
-          <h4 class="red pointer" *ngIf="mydata.length<listUrl.length">Stop!</h4>
-          <h4 class="red pointer" *ngIf="mydata.length>=listUrl.length" (click)="resetForms()">Clear and start from scratches</h4>
+          <h4 class="red pointer" *ngIf="mydata.success.length+mydata.failed.length<listUrl.length" (click)="stopQueue()">Stop!</h4>
+          <h4 class="red pointer" *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone" (click)="resetForms()">Clear and start from scratches</h4>
         </div>
       </div>
       <div class="progress row">
-        <div class="progress-bar progress-bar-infozzz progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;" [ngStyle]="{'width':100*mydata.length/listUrl.length+'%'}">
-          <span class="">{{100*mydata.length/listUrl.length | number:'1.0-2'}}%</span>
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':100*mydata.success.length/listUrl.length+'%'}" [class.done]="mydata.success.length === listUrl.length">
+          <span class="">{{100*mydata.success.length/listUrl.length | number:'1.0-2'}}%</span>
+        </div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':100*mydata.failed.length/listUrl.length+'%'}">
+          <span class="">{{100*mydata.failed.length/listUrl.length | number:'1.0-2'}}%</span>
         </div>
       </div>
 
       <div class="row flag-container">
-        <!-- <div class="col-xs-12"> -->
-          <div class="color-cont" *ngFor="#img of mydata">
+          <div class="color-cont" *ngFor="#img of mydata.success">
             <img class="" src="{{img.url}}"/>
               <div class="colour-flag">
                 <div  class="color" *ngFor="#color of img.clusters" [ngStyle]="{'background-color':'rgb('+color.rgb[0]+','+color.rgb[1]+','+color.rgb[2]+')','width':color.perc+'%'}">
               </div>
             </div>
           </div>
-        <!-- </div> -->
       </div>
 
-      <!-- <div *ngIf="mydata.length<listUrl.length" class="row">
-        <div class="input-box col-xs-12">
-          <button type="submit" class="btn btn-default" (click)="0">Stop!</button>
-        </div>
-      </div> -->
+      <download-section [data]=mydata [appName]=appName *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone"></download-section>
 
-      <div class="row" *ngIf="mydata.length>=listUrl.length">
-        <div class="input-box col-xs-6">
-          <button type="submit" class="btn btn-default" disabled>Download SVG</button>
-        </div>
-        <div class="input-box col-xs-6">
-          <button type="submit" class="btn btn-default" (click)="getDataCSV()">Download CSV</button>
-        </div>
-      </div>
-      <!-- <div class="row">
-        <div class="input-box col-xs-6">
-          <button type="submit" class="btn btn-default" (click)="resetForms()">Clear</button>
-        </div>
-      </div> -->
   </section>
 
-  <!-- <section class="container" *ngIf="!mydata.length">
-    <div class="row">
-      <div class="col-xs-12">
-        <p>https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Mirop.jpg/173px-Mirop.jpg</p>
-        <p>https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Piet_Mondriaan_Victory_Boogie_Woogie.jpg/240px-Piet_Mondriaan_Victory_Boogie_Woogie.jpg</p>
-        <p>https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Adolphe_Crespin_1897.jpg/172px-Adolphe_Crespin_1897.jpg</p>
+  <footer class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>This tool is part of <a href="#">Strumentalia</a>.</p>
+          <p>Code available on <a href="#">GitHub <i class="fa fa-github"></i></a>.</p>
+          <p>Designed and developed by <a href="http://www.densitydesign.org" target="_blank">DensityDesign</a>.</p>
+        </div>
       </div>
     </div>
-  </section> -->
-
-
+  </footer>
 
 </main>
