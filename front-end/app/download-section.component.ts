@@ -53,7 +53,7 @@ export class DownloadSection {
             d3.select(this).append("text")
               .attr("x", 0)
               .attr("y", 120)
-              .text(j)
+              .text(function() { "id" + j})
 
            })
 
