@@ -11,7 +11,8 @@ import {DownloadSection} from './download-section.component';
 })
 export class AppComponent {
   public appName = "Kromotology";
-  public sampleList = '';
+  public sampleList = `http://memesvault.com/wp-content/uploads/Pokemon-Meme-Dat-Ash-04.png
+https://38.media.tumblr.com/avatar_a455f5f2e007_128.png`;
   _http:Http;
   mydata = {"success":[],"failed":[]};
   temp:{};
@@ -45,15 +46,19 @@ export class AppComponent {
               data => this.temp = data,
               err => this.logError(err),
               () => {
-                this.mydata.success.push(JSON.parse(this.temp._body));
-                console.log("failed",this.mydata.failed.length,"success",this.mydata.success.length);
+                if (!this.isDone) {
+                  this.mydata.success.push(JSON.parse(this.temp._body));
+                  console.log("failed",this.mydata.failed.length,"success",this.mydata.success.length);
+                }
               }
           )
   }
 
   logError(err) {
     console.error(err);
-    this.mydata.failed.push("error");
+    if (!this.isDone) {
+      this.mydata.failed.push("error");
+    }
   }
 
   post(name: string, data: Object, requestOptions?: RequestOptionsArgs): any {
@@ -96,15 +101,12 @@ export class AppComponent {
         }
       }
       console.log("Images to process:",this.listUrl.length);
+
       for(var i=0; i<this.listUrl.length; i++) {
-        if(this.listUrl[i] != "") {
-          this.get("/single",{img:this.listUrl[i], k:k})
-          this.percentageDone = 100*this.mydata.success.length/this.listUrl.length;
-          window.scrollTo(0, document.body.scrollHeight);
-        } else {
-          console.log(this.listUrl[i], "is not a url");
-        }
+        this.get("/single",{img:this.listUrl[i], k:k})
+        this.percentageDone = 100*this.mydata.success.length/this.listUrl.length;
       }
+
   }
 
 }

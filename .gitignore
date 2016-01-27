@@ -1,3 +1,6 @@
+#system
+*.DS_Store
+
 # Logs
 logs
 *.log
@@ -39,3 +42,7 @@ node_modules
 #compiled files
 *.js
 *.map
+
+UI
+
+mock-data

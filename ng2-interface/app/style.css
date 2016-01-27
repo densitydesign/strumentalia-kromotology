@@ -18,6 +18,7 @@ h4 {
   font-size: 12px;
   font-weight: 700;
   padding-left: 10px;
+  padding-right: 10px;
 }
 
 .right h4 {
@@ -101,7 +102,13 @@ input, textarea {
 }
 
 .input-box i.fa {
-  font-size: 20px;
+  font-size: 16px;
+}
+
+.empty {
+  float: right;
+  cursor: pointer;
+  color: #4a4a4a;
 }
 
 .flag-container{
@@ -162,8 +169,13 @@ input, textarea {
   cursor: pointer;
 }
 
+.progress {
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.1)
+
+}
+
 .progress-bar {
-  background-color: #EEBB22;
+  background-color: #A0D0E3;
 }
 .progress-bar.progress-bar-danger {
   background-color: #FA5E47;
@@ -178,6 +190,9 @@ input, textarea {
   color: #4a4a4a;
 }
 
+#chart {
+  display: none;
+}
 
 footer {
   background-color: #4a4a4a;

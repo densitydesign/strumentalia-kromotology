@@ -8,17 +8,17 @@
         </div>
       </div>
       <div class="row ">
-        <div class="col-xs-12">
-          <p><b>{{appName}}</b> is able to identify color cluster inside images, taken as inputs.</p>
-          <p>It analyses the images pixel by pixel (running a <a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank">k-means</a> algorithm), looking for group of similar tints and then it returns the names and the percentage of the colors discovered.</p>
+        <div class="col-xs-9">
+          <p><b>{{appName}}</b> is a tool for performing the extraction and the labeling of dominant colors in raster images.</p>
+          <p>It analyses the images pixel by pixel (running a <a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank">k-means</a> algorithm), looking for group of similar tints and then it returns the names and the percentage of the colors discovered, both in visual form and data.</p>
         </div>
-        <div class="col-xs-12 examples">
+        <div class="col-xs-9 examples">
           <img src="./app/img/example-img.jpg"/>
-            <i class="fa fa-arrow-circle-right" data-toggle="tooltip" data-placement="top" title="Tooltip on top" tooltip-placement="top" tooltip="Process 5 clusters."></i>
+            <i class="fa fa-arrow-circle-right" data-toggle="tooltip" data-placement="top" title="Get 5 cluster" tooltip-placement="top" tooltip="Process 5 clusters."></i>
           <img src="./app/img/example-flag.png"/>
         </div>
-        <div class="col-xs-12">
-          <p>The amount of colors to be discovered is set to <b>5</b> by default, but it can be changed if you need more, just remember the higher this number, the slower the process gets.</p>
+        <div class="col-xs-9">
+          <p>The amount of colors to be discovered is set to <b>5</b> by default, but it can be changed if you need more, just remember: the higher gets this number, the longer the process will take.</p>
           <p>Right now, SVG images will be skipped due to developing reasons.</p>
         </div>
       </div>
@@ -29,7 +29,8 @@
     <div class="row">
       <div class="col-xs-9">
         <div class="input-box">
-          <h4 class="">Paste here the list of image's URLs</h4>
+          <h4 class="">Paste here the list of image's URLs<i class="fa fa-trash empty" (click)="imgUrl.value=''"></i></h4>
+
           <textarea #imgUrl class="" type="text-area" name="imgUrl" id="imgUrl" placeholder="One URL each line" required>{{sampleList}}</textarea>
         </div>
       </div>
@@ -50,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!mydata.success.length" class="row">
+    <div *ngIf="!mydata.success.length && !mydata.failed.length" class="row">
       <div class="input-box col-xs-12">
         <button type="submit" class="btn btn-default go" (click)="callKmean(imgUrl.value, k.value)">Go!</button>
       </div>
@@ -60,19 +61,23 @@
   <section class="container results" *ngIf="mydata.success.length || mydata.failed.length">
       <div class="row">
         <div class="col-xs-8">
-          <h4>Results ({{mydata.success.length+mydata.failed.length}}/{{listUrl.length}} parsed)</h4>
+          <h4>Results ({{mydata.success.length+mydata.failed.length}}/{{listUrl.length}} parsed<span *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone"> – <span style="color:#A0D0E3"> {{mydata.success.length}} Succesful</span> – <span style="color:#FA5E47">{{mydata.failed.length}} Failed</span></span>)</h4>
         </div>
         <div class="col-xs-4 right ">
-          <h4 class="red pointer" *ngIf="mydata.success.length+mydata.failed.length<listUrl.length" (click)="stopQueue()">Stop!</h4>
+          <h4 class="red pointer" *ngIf="mydata.success.length+mydata.failed.length!=listUrl.length" (click)="stopQueue()">Stop!</h4>
           <h4 class="red pointer" *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone" (click)="resetForms()">Clear and start from scratches</h4>
         </div>
       </div>
-      <div class="progress row">
-        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':100*mydata.success.length/listUrl.length+'%'}" [class.done]="mydata.success.length === listUrl.length">
-          <span class="">{{100*mydata.success.length/listUrl.length | number:'1.0-2'}}%</span>
-        </div>
-        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':100*mydata.failed.length/listUrl.length+'%'}">
-          <span class="">{{100*mydata.failed.length/listUrl.length | number:'1.0-2'}}%</span>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class=" progress">
+            <div class="progress-bar" role="progressbar progress-bar-success" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':100*mydata.success.length/listUrl.length+'%'}" [class.done]="mydata.success.length === listUrl.length">
+              <span class="">{{100*mydata.success.length/listUrl.length | number:'1.0-2'}}% Successful</span>
+            </div>
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':100*mydata.failed.length/listUrl.length+'%'}">
+              <span class="">{{100*mydata.failed.length/listUrl.length | number:'1.0-2'}}% Failed</span>
+            </div>
+          </div>
         </div>
       </div>
 
