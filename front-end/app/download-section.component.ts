@@ -3,6 +3,7 @@ import {Component} from 'angular2/core'
 @Component({
   selector: 'download-section',
   inputs: ['data','appName'],
+  styleUrls: ['./app/kromotology.css']
   template: `
   <div class="row">
     <div id="svg-container" class="col-xs-12">
@@ -14,7 +15,7 @@ import {Component} from 'angular2/core'
       <button type="submit" class="btn btn-default" (click)="getDataSVG()">Download SVG</button>
     </div>
     <div class="input-box col-xs-6">
-      <button type="submit" class="btn btn-default" (click)="getDataCSV()">Download TSV</button>
+      <button type="submit" class="btn btn-default" (click)="getDataTSV()">Download TSV</button>
     </div>
   </div>`
 })
@@ -53,7 +54,7 @@ export class DownloadSection {
             d3.select(this).append("text")
               .attr("x", 0)
               .attr("y", 120)
-              .text(function() { "id" + j})
+              .text(function() { return "id: " + j})
 
            })
 
@@ -63,11 +64,11 @@ export class DownloadSection {
     document.getElementById("chart").innerHTML = "";
   }
 
-  getDataCSV() {
+  getDataTSV() {
     var csvtxt = 'id\timgUrl\tcolorName\tpercentage\thexadecimal\n';
     this.data.success.forEach(function(img,i){
       img.clusters.forEach(function(k){
-        var hexString = '#' + k.rgb[0].toString(16) + k.rgb[1].toString(16) + k.rgb[2].toString(16);
+        var hexString = d3.rgb(k.rgb[0],k.rgb[1],k.rgb[2]).toString();
         csvtxt+=(i + '\t' + img.url +'\t'+ k.label +'\t'+ k.perc +'\t'+ hexString.toUpperCase() +'\n');
       })
     })

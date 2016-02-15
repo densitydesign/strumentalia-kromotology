@@ -1,0 +1,98 @@
+<div class="app-header container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>{{appName}}</h1>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-xs-9">
+        <p><b>{{appName}}</b> is a tool for performing the extraction and the labeling of dominant colors in raster images.</p>
+        <p>It analyses the images pixel by pixel (running a <a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank">k-means</a> algorithm), looking for group of similar tints and then it returns the names and the percentage of the colors discovered, both in visual form and data.</p>
+      </div>
+      <div class="col-xs-9 examples">
+        <img src="./app/img/example-img.jpg"/>
+          <i class="fa fa-arrow-circle-right" data-toggle="tooltip" data-placement="top" title="Get 5 cluster" tooltip-placement="top" tooltip="Process 5 clusters."></i>
+        <img src="./app/img/example-flag.png"/>
+      </div>
+      <div class="col-xs-9">
+        <p>The amount of colors to be discovered is set to <b>5</b> by default, but it can be changed if you need more (or less), just remember: the higher gets this number, the longer the process will take.</p>
+        <p class="bold">URLs that do not correspond to raster images (not ending in jpeg, jpg, gif, png) will be skipped.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="input-box">
+        <h4 class="">Paste here the list of image's URLs<i class="fa fa-trash empty" (click)="imgUrl.value=''"></i></h4>
+        <textarea #imgUrl class="" type="text-area" name="imgUrl" id="imgUrl" placeholder="One URL each line" required>{{sampleList2}}</textarea>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="input-box">
+        <h4 class="">N° of clusters</h4>
+        <p><input #k class="" type="text" name="imgUrl" id="imgUrl" placeholder="N° Cluster" value="5" required></p>
+      </div>
+      <div class="input-box">
+        <h4 class="">Resize images?</h4>
+        <div class="resizeBox">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="resampleSwitch" checked disabled > Yes
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!mydata.success.length && !mydata.failed.length" class="row">
+    <div class="input-box col-xs-12">
+      <button type="submit" class="btn btn-default go" (click)="callKmean(imgUrl.value, k.value)">Go!</button>
+    </div>
+  </div>
+</section>
+
+<section class="container results" *ngIf="mydata.success.length || mydata.failed.length">
+    <div class="row">
+      <div class="col-xs-8">
+        <h4>Results ({{mydata.success.length+mydata.failed.length}}/{{listUrl.length}} parsed<span *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone"> – <span style="color:#A0D0E3"> {{mydata.success.length}} Succesful</span> – <span style="color:#FA5E47">{{mydata.failed.length}} Failed</span></span>)</h4>
+      </div>
+      <div class="col-xs-4 right ">
+
+        <h4 class="red pointer" *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone" (click)="resetForms()">Clear and start from scratches</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class=" progress">
+          <div class="progress-bar progress-bar-success" role="progressbar progress-bar-success" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':100*mydata.success.length/listUrl.length+'%'}" [class.done]="mydata.success.length === listUrl.length">
+            <span class="">{{100*mydata.success.length/listUrl.length | number:'1.0-2'}}% Successful</span>
+          </div>
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':100*mydata.failed.length/listUrl.length+'%'}">
+            <span class="">{{100*mydata.failed.length/listUrl.length | number:'1.0-2'}}% Failed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row flag-container">
+        <div class="color-cont" *ngFor="#img of mydata.success">
+          <img class="" src="{{img.url}}"/>
+          <a class="colour-flag" href="{{img.url}}" target="_blank">
+            <div  class="color" *ngFor="#color of img.clusters" [ngStyle]="{'background-color':'rgb('+color.rgb[0]+','+color.rgb[1]+','+color.rgb[2]+')','width':color.perc+'%'}"></div>
+          </a>
+
+        </div>
+    </div>
+
+    <div *ngIf="mydata.success.length+mydata.failed.length!=listUrl.length" class="row">
+      <div class="input-box col-xs-12">
+        <button type="submit" class="btn btn-danger" (click)="stopQueue()">Stop</button>
+      </div>
+    </div>
+
+    <download-section [data]=mydata [appName]=appName *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone"></download-section>
+
+</section>
