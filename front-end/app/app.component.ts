@@ -3,12 +3,11 @@ import {Http, URLSearchParams, RequestOptionsArgs, Headers, HTTP_BINDINGS,HTTP_P
 import {NgStyle} from 'angular2/common';
 import {Header} from './header.component';
 import {Kromotology} from './kromotology.component';
-import {DownloadSection} from './download-section.component';
 import {Footer} from './footer.component';
 
 @Component({
   selector: 'my-app',
-  directives: [Header, Kromotology, DownloadSection, Footer],
+  directives: [Header, Kromotology, Footer],
   providers: [Http,HTTP_PROVIDERS],
   template: `
   <strumentalia-header [prjName]="prjName"></strumentalia-header>
@@ -21,7 +20,3 @@ import {Footer} from './footer.component';
 export class AppComponent {
   public prjName = "Strumentalia";
 }
-
-
-//call this way
-//http://131.175.56.235:8080/single/?img=http://www.gstatic.com/webp/gallery/2.jpg&k=5

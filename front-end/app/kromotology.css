@@ -136,12 +136,28 @@ input, textarea {
   border-radius: 2px;
   box-shadow: 0px 2px 4px rgba(0,0,0,.2);
   overflow: hidden;
-  display: block;
+  width:100px;
+  transition: box-shadow 0.3s ease;
 }
 
-.color-cont > img {
-  width: auto;
-  height: 100%;
+.color-cont:hover {
+  box-shadow: none;
+}
+
+.color-cont > .img-container {
+  width: 100px;
+  height: 100px;
+  display: block;
+  background-color: #d4d4d4;
+}
+
+.color-cont > .img-container > img {
+  max-width:100%;
+  max-height:100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .color-cont .colour-flag {
@@ -152,10 +168,11 @@ input, textarea {
   opacity: 1;
   transition: opacity 0.3s ease;
   width: 101%;
+  height: 100%;
   display: block;
 }
 
-.color-cont .colour-flag:hover {
+.color-cont:hover .colour-flag {
   opacity: 0;
 }
 

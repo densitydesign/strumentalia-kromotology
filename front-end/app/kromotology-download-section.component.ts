@@ -1,13 +1,13 @@
 import {Component} from 'angular2/core'
 
 @Component({
-  selector: 'download-section',
+  selector: 'kromotology-download-section',
   inputs: ['data','appName'],
-  styleUrls: ['./app/kromotology.css']
+  styleUrls: ['./app/kromotology.css'],
   template: `
   <div class="row">
     <div id="svg-container" class="col-xs-12">
-      <svg id="chart" xmlns="http://www.w3.org/2000/svg" version="1.1" class="chart"></svg>
+      <svg id="chart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="chart"></svg>
     </div>
   </div>
   <div class="row">
@@ -19,42 +19,48 @@ import {Component} from 'angular2/core'
     </div>
   </div>`
 })
-export class DownloadSection {
+export class KromotologyDownloadSection {
   public data;
 
   getDataSVG(){
-    var width = 500;
-    var height = 100;
+    var size = 100;
+    var rowsLenght = 8;
     var imgPadding = 30;
     var margin = {'top':10, 'right':10,'bottom':10,'left':10};
+    var height = (size+imgPadding) * Math.ceil(this.data.success.length/rowsLenght);
+    var width = (size+imgPadding)*rowsLenght;
 
     var chart = d3.select(".chart")
       .attr("width", width)
-      .attr("height", (height+imgPadding) * this.data.success.length);
+      .attr("height", height;
 
-    console.log("data",this.data);
-
-
+    console.log(this.data.success)
 
     var flag = chart.selectAll("g")
         .data(this.data.success)
       .enter().append("g")
         .attr("transform", function(d, i) {
-            return "translate(0," + i * (height+imgPadding) + ")";
+            //Organize results in rows composed by "rowsLenght" elements
+            return "translate(" + (i%rowsLenght)*(size+imgPadding) + "," + Math.floor(i/rowsLenght) * (size+imgPadding) + ")";
         })
           .each(function(e,j){
             d3.select(this).selectAll('rect')
                .data(function (d, i) { return d.clusters; })
              .enter().append('rect')
-               .attr("x", function(d, i) { return d.totperc*(e.size.width/e.size.height) } )
+               .attr("x", function(d, i) { return d.totperc } )
                .attr("y", 0)
-               .attr("height", height)
-               .attr("width", function (d,i) { return d.perc*(e.size.width/e.size.height) })
+               .attr("height", size)
+               .attr("width", function(d,i) { return d.perc })
                .attr("fill", function(d) { return 'rgb('+ d.rgb[0] +','+ d.rgb[1] +','+ d.rgb[2] +')' })
-            d3.select(this).append("text")
-              .attr("x", 0)
-              .attr("y", 120)
-              .text(function() { return "id: " + j})
+
+            d3.select(this).append("a")
+              .attr("xlink:href", function(d) { return d.url; })
+              .attr("target", "_blank")
+              .append("text")
+                .attr("x", size/2)
+                .attr("y", size+(imgPadding*0.6))
+                .attr("text-anchor", "middle")
+                .text(function() { return "id: " + j})
 
            })
 
@@ -65,11 +71,12 @@ export class DownloadSection {
   }
 
   getDataTSV() {
-    var csvtxt = 'id\timgUrl\tcolorName\tpercentage\thexadecimal\n';
+    console.log(this.data.success)
+    var csvtxt = 'id\timgUrl\twidth\theight\tcolorName\tpercentage\thexadecimal\n';
     this.data.success.forEach(function(img,i){
       img.clusters.forEach(function(k){
         var hexString = d3.rgb(k.rgb[0],k.rgb[1],k.rgb[2]).toString();
-        csvtxt+=(i + '\t' + img.url +'\t'+ k.label +'\t'+ k.perc +'\t'+ hexString.toUpperCase() +'\n');
+        csvtxt+=(i + '\t' + img.url + '\t' + img.size.width + '\t' + img.size.height +'\t'+ k.label +'\t'+ k.perc +'\t'+ hexString.toUpperCase() +'\n');
       })
     })
     var blob = new Blob([csvtxt], { type: 'data:text/csv;charset=utf-8' });

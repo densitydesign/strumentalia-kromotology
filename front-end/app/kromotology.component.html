@@ -27,7 +27,7 @@
     <div class="col-xs-9">
       <div class="input-box">
         <h4 class="">Paste here the list of image's URLs<i class="fa fa-trash empty" (click)="imgUrl.value=''"></i></h4>
-        <textarea #imgUrl class="" type="text-area" name="imgUrl" id="imgUrl" placeholder="One URL each line" required>{{sampleList2}}</textarea>
+        <textarea #imgUrl class="" type="text-area" name="imgUrl" id="imgUrl" placeholder="One URL each line" required>{{sampleList}}</textarea>
       </div>
     </div>
     <div class="col-xs-3">
@@ -79,11 +79,10 @@
 
     <div class="row flag-container">
         <div class="color-cont" *ngFor="#img of mydata.success">
-          <img class="" src="{{img.url}}"/>
+          <div class="img-container"><img class="" src="{{img.url}}"/></div>
           <a class="colour-flag" href="{{img.url}}" target="_blank">
             <div  class="color" *ngFor="#color of img.clusters" [ngStyle]="{'background-color':'rgb('+color.rgb[0]+','+color.rgb[1]+','+color.rgb[2]+')','width':color.perc+'%'}"></div>
           </a>
-
         </div>
     </div>
 
@@ -93,6 +92,6 @@
       </div>
     </div>
 
-    <download-section [data]=mydata [appName]=appName *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone"></download-section>
+    <kromotology-download-section [data]=mydata [appName]=appName *ngIf="mydata.success.length+mydata.failed.length===listUrl.length || isDone"></kromotology-download-section>
 
 </section>
