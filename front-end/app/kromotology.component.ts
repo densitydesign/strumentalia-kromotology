@@ -16,7 +16,7 @@ export class Kromotology implements OnInit{
   public appName = "Kromotology";
   public sampleList:string;
   ngOnInit(){
-    this.sampleList = mockList2;
+    // this.sampleList = "mockList2";
   }
 
   _http:Http;

@@ -43,8 +43,6 @@ import {Component} from 'angular2/core'
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="actives"><a href="#">Kromotology</a></li>
-            <li><a href="#">Seealsology</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">About</a></li>

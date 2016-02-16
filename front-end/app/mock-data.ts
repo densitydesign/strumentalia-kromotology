@@ -1,3 +1,5 @@
+//http://labs.densitydesign.org/kromotology-samples/migration/links-migration.txt
+
   export var mockList1:string = `https://upload.wikimedia.org/wikipedia/commons/3/3e/Irises-Vincent_van_Gogh.jpg
 https://upload.wikimedia.org/wikipedia/commons/0/02/Vincent_Van_Gogh_0020.jpg
 https://upload.wikimedia.org/wikipedia/commons/f/f0/VanGogh-self-portrait-with_bandaged_ear.jpg
