@@ -1,0 +1,15 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #4a4a4a;
+}
+
+a {
+  color: #FA5E47;
+  font-weight: 600;
+}
+
+a:hover {
+  opacity: 1;
+  color: #FB8675;
+  text-decoration: underline;
+}

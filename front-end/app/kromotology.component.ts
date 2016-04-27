@@ -1,18 +1,24 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {Http, URLSearchParams, RequestOptionsArgs, Headers, HTTP_BINDINGS,HTTP_PROVIDERS,  Response} from 'angular2/http';
 import {NgStyle} from 'angular2/common';
-import {DownloadSection} from './download-section.component';
+import {KromotologyDownloadSection} from './kromotology-download-section.component';
+import {mockList1,mockList2,mockList3} from './mock-data';
 
 @Component({
-  selector: 'my-app',
-  templateUrl: 'app/app.component.html',
-  directives: [DownloadSection],
-  providers:[Http,HTTP_PROVIDERS]
+  selector: 'kromotology',
+  inputs: ['prjName'],
+  directives: [KromotologyDownloadSection],
+  providers: [Http,HTTP_PROVIDERS],
+  styleUrls: ['./app/kromotology.css'],
+  templateUrl: './app/kromotology.component.html'
 })
-export class AppComponent {
+export class Kromotology implements OnInit{
   public appName = "Kromotology";
-  public sampleList = `http://memesvault.com/wp-content/uploads/Pokemon-Meme-Dat-Ash-04.png
-https://38.media.tumblr.com/avatar_a455f5f2e007_128.png`;
+  public sampleList:string;
+  ngOnInit(){
+    // this.sampleList = "mockList2";
+  }
+
   _http:Http;
   mydata = {"success":[],"failed":[]};
   temp:{};
@@ -76,29 +82,28 @@ https://38.media.tumblr.com/avatar_a455f5f2e007_128.png`;
     this.isDone = true;
   }
 
-  getDataCSV() {
-    var csvtxt = 'id\timgUrl\tcolorName\tpercentage\thexadecimal\n';
-    this.mydata.success.forEach(function(img,i){
-      img.clusters.forEach(function(k){
-        var hexString = '#' + k.rgb[0].toString(16) + k.rgb[1].toString(16) + k.rgb[2].toString(16);
-        csvtxt+=(i + '\t' + img.url +'\t'+ k.label +'\t'+ k.perc +'\t'+ hexString.toUpperCase() +'\n');
-      })
-    })
-    var blob = new Blob([csvtxt], { type: 'data:text/csv;charset=utf-8' });
-    saveAs(blob, this.appName + '-data.tsv');
+  // getDataTSV() {
+  //   var csvtxt = 'id\timgUrl\tcolorName\tpercentage\thexadecimal\n';
+  //   this.mydata.success.forEach(function(img,i){
+  //     img.clusters.forEach(function(k){
+  //       var hexString = '#' + k.rgb[0].toString(16) + k.rgb[1].toString(16) + k.rgb[2].toString(16);
+  //       csvtxt+=(i + '\t' + img.url +'\t'+ k.label +'\t'+ k.perc +'\t'+ hexString.toUpperCase() +'\n');
+  //     })
+  //   })
+  //   var blob = new Blob([csvtxt], { type: 'data:text/csv;charset=utf-8' });
+  //   saveAs(blob, this.appName + '-data.tsv');
+  // }
+
+  checkURL(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
   }
 
   callKmean(imgUrl:string, k:number) {
-      this.isDone = false;
-      this.mydata = {"success":[],"failed":[]};
-      this.listUrlRaw = [];
+      this.resetForms();
       this.listUrlRaw = imgUrl.split("\n");
+
       for(var i=0; i<this.listUrlRaw.length; i++) {
-        if(this.listUrlRaw[i] != "") {
-          if( this.listUrlRaw[i].indexOf('.svg') == -1 ) {
-            this.listUrl.push(this.listUrlRaw[i])
-          }
-        }
+        if(this.checkURL(this.listUrlRaw[i])) { this.listUrl.push(this.listUrlRaw[i]) }
       }
       console.log("Images to process:",this.listUrl.length);
 
@@ -109,7 +114,7 @@ https://38.media.tumblr.com/avatar_a455f5f2e007_128.png`;
 
   }
 
-}
+} //closes Kromotology
 
 
 //call this way

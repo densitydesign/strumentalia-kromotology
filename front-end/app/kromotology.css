@@ -1,8 +1,3 @@
-body {
-  font-family: 'Open Sans', sans-serif;
-  color: #4a4a4a;
-}
-
 h1 {
  font-family: 'Paytone One', sans-serif;
  font-size: 48px;
@@ -26,14 +21,9 @@ h4 {
   padding-right: 10px;
 }
 
-a {
-  color: #FA5E47;
-  font-weight: 700;
-}
-
-header {
+.app-header {
   background-color: #E4E9EB;
-  padding: 60px 0px;
+  padding: 90px 0px 60px;
 }
 
 section {
@@ -43,6 +33,10 @@ section {
 input, textarea {
   font-family: 'Cutive Mono', monospace;
   font-size: 14px;
+}
+
+.bold {
+  font-weight: 600;
 }
 
 .examples {
@@ -75,14 +69,30 @@ input, textarea {
   width: 100%;
 }
 
-.input-box button.go {
-  background-color: rgba(228,233,235,0.7);
+.input-box button.btn {
+  background-color: #E4E9EB;
   border:none;
-  border-bottom: 4px solid #E4E9EB;
+  border-bottom: 4px solid #C5D6D9;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.input-box button.go:hover {
+.input-box button.btn:hover {
+  border-bottom: #E4E9EB;
+}
+
+.input-box button.btn:active {
   background-color: #E4E9EB;
+  border: none;
+}
+
+.input-box button.btn.btn-danger {
+  background-color: #FA5E47;
+  border-bottom: 4px solid #C54E3C;
+}
+
+.input-box button.btn.btn-danger:hover {
+  border-bottom: 4px solid #FA5E47;
 }
 
 .resizeBox {
@@ -126,11 +136,28 @@ input, textarea {
   border-radius: 2px;
   box-shadow: 0px 2px 4px rgba(0,0,0,.2);
   overflow: hidden;
+  width:100px;
+  transition: box-shadow 0.3s ease;
 }
 
-.color-cont > img {
-  width: auto;
-  height: 100%;
+.color-cont:hover {
+  box-shadow: none;
+}
+
+.color-cont > .img-container {
+  width: 100px;
+  height: 100px;
+  display: block;
+  background-color: #d4d4d4;
+}
+
+.color-cont > .img-container > img {
+  max-width:100%;
+  max-height:100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .color-cont .colour-flag {
@@ -140,10 +167,12 @@ input, textarea {
   top: -100%;
   opacity: 1;
   transition: opacity 0.3s ease;
-  width: 101%
+  width: 101%;
+  height: 100%;
+  display: block;
 }
 
-.color-cont .colour-flag:hover {
+.color-cont:hover .colour-flag {
   opacity: 0;
 }
 
@@ -171,12 +200,12 @@ input, textarea {
 
 .progress {
   box-shadow: inset 0 2px 4px rgba(0,0,0,.1)
-
 }
 
-.progress-bar {
-  background-color: #A0D0E3;
+.progress-bar.progress-bar-success {
+  background-color: #9FCA70;
 }
+
 .progress-bar.progress-bar-danger {
   background-color: #FA5E47;
 }
@@ -192,11 +221,4 @@ input, textarea {
 
 #chart {
   display: none;
-}
-
-footer {
-  background-color: #4a4a4a;
-  color: white;
-  padding: 30px 0;
-  border-top: 1px solid #a4a4a4;
 }
