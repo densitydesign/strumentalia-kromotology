@@ -88,6 +88,7 @@ ColorClassifier.prototype = {
 
     learn: function (data) {
       this.data = data;
+
     },
     classify: function (triplet,isHex) {
 
@@ -110,6 +111,7 @@ ColorClassifier.prototype = {
           min_idx = i;
         }
       }
+
       this.last_result = min_idx;
       return this.data[min_idx].label;
     },

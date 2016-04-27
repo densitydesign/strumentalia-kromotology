@@ -14,7 +14,7 @@ var clustering = require('density-clustering');
 var optics = new clustering.DBSCAN();
 
 //load initial dataset of colors
-classifier.getdb('dataset.js');
+classifier.getdb('colors_quant.json');
 
 var maxSize=200;
 //*******************************************
@@ -23,7 +23,12 @@ var maxSize=200;
 var download = function(uri, filename, callback){
     request.head(uri, function(err, res, body){
         callback(err);
-        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+        w = fs.createWriteStream(filename);
+        request(uri).pipe(w).on('error', function(error){
+            console.log(error);
+        })
+            .on('close',callback);
+
     });
 };
 
@@ -53,10 +58,20 @@ var processImg = function (imgurl, nclust, orig, callback) {
     var fname = imgurl.split("/").pop();
     var vectors = new Array();
 
+    console.log(imgurl, fname);
 
-    download(imgurl, fname, function(dlerr){
+
+    //prova :)
+    //download(imgurl, fname, function(dlerr){
+    fname="dog.jpg";
+    dlerr=null;
+    // :)
+
+
+        console.log("over!");
 
         if(dlerr) {
+            console.log(dlerr);
             callback(null);
             return null;
         }
@@ -65,7 +80,8 @@ var processImg = function (imgurl, nclust, orig, callback) {
     //open image, sync fashion
     lwip.open(fname, function (err, image) {
 
-
+        console.log(fname);
+        console.log(image,err);
         var batch = image.batch();
 
 
@@ -124,13 +140,13 @@ var processImg = function (imgurl, nclust, orig, callback) {
             }
 
             //return json with info on centroids
-            fs.unlink(fname);
+            //fs.unlink(fname);
             callback(totres);
         })
     });
         // check err, use image
     });
-    });
+    //});
 };
 
 /*
@@ -211,6 +227,7 @@ var router = express.Router();
 router.get('/single', function(req, res) {
 
     var img = req.query.img;
+    img = "../dog.jpg";
     var k = req.query.k;
     var orig = false;
 

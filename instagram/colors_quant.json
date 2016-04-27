@@ -1,0 +1,989 @@
+[
+    {
+      "HTML name" : "Pink",
+      "x" : 255,
+      "y" : 192,
+      "z" : 203,
+      "label" : "Pink"
+    },
+    {
+      "HTML name" : "LightPink",
+      "x" : 255,
+      "y" : 182,
+      "z" : 193,
+      "label" : "Pink"
+    },
+    {
+      "HTML name" : "HotPink",
+      "x" : 255,
+      "y" : 105,
+      "z" : 180,
+      "label" : "Pink"
+    },
+    {
+      "HTML name" : "DeepPink",
+      "x" : 255,
+      "y" : 20,
+      "z" : 147,
+      "label" : "Pink"
+    },
+    {
+      "HTML name" : "PaleVioletRed",
+      "x" : 219,
+      "y" : 112,
+      "z" : 147,
+      "label" : "Pink"
+    },
+    {
+      "HTML name" : "MediumVioletRed",
+      "x" : 199,
+      "y" : 21,
+      "z" : 133,
+      "label" : "Pink"
+    },
+    {
+      "HTML name" : "LightSalmon",
+      "x" : 255,
+      "y" : 160,
+      "z" : 122,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "Salmon",
+      "x" : 250,
+      "y" : 128,
+      "z" : 114,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "DarkSalmon",
+      "x" : 233,
+      "y" : 150,
+      "z" : 122,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "LightCoral",
+      "x" : 240,
+      "y" : 128,
+      "z" : 128,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "IndianRed",
+      "x" : 205,
+      "y" : 92,
+      "z" : 92,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "Crimson",
+      "x" : 220,
+      "y" : 20,
+      "z" : 60,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "FireBrick",
+      "x" : 178,
+      "y" : 34,
+      "z" : 34,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "DarkRed",
+      "x" : 139,
+      "y" : 0,
+      "z" : 0,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "Red",
+      "x" : 255,
+      "y" : 0,
+      "z" : 0,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "OrangeRed",
+      "x" : 255,
+      "y" : 69,
+      "z" : 0,
+      "label" : "Orange"
+    },
+    {
+      "HTML name" : "Tomato",
+      "x" : 255,
+      "y" : 99,
+      "z" : 71,
+      "label" : "Orange"
+    },
+    {
+      "HTML name" : "Coral",
+      "x" : 255,
+      "y" : 127,
+      "z" : 80,
+      "label" : "Orange"
+    },
+    {
+      "HTML name" : "DarkOrange",
+      "x" : 255,
+      "y" : 140,
+      "z" : 0,
+      "label" : "Orange"
+    },
+    {
+      "HTML name" : "Orange",
+      "x" : 255,
+      "y" : 165,
+      "z" : 0,
+      "label" : "Orange"
+    },
+    {
+      "HTML name" : "Yellow",
+      "x" : 255,
+      "y" : 255,
+      "z" : 0,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "LightYellow",
+      "x" : 255,
+      "y" : 255,
+      "z" : 224,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "LemonChiffon",
+      "x" : 255,
+      "y" : 250,
+      "z" : 205,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "LightGoldenrodYellow",
+      "x" : 250,
+      "y" : 250,
+      "z" : 210,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "PapayaWhip",
+      "x" : 255,
+      "y" : 239,
+      "z" : 213,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "Moccasin",
+      "x" : 255,
+      "y" : 228,
+      "z" : 181,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "PeachPuff",
+      "x" : 255,
+      "y" : 218,
+      "z" : 185,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "PaleGoldenrod",
+      "x" : 238,
+      "y" : 232,
+      "z" : 170,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "Khaki",
+      "x" : 240,
+      "y" : 230,
+      "z" : 140,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "DarkKhaki",
+      "x" : 189,
+      "y" : 183,
+      "z" : 107,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "Gold",
+      "x" : 255,
+      "y" : 215,
+      "z" : 0,
+      "label" : "Yellow"
+    },
+    {
+      "HTML name" : "Cornsilk",
+      "x" : 255,
+      "y" : 248,
+      "z" : 220,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "BlanchedAlmond",
+      "x" : 255,
+      "y" : 235,
+      "z" : 205,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "Bisque",
+      "x" : 255,
+      "y" : 228,
+      "z" : 196,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "NavajoWhite",
+      "x" : 255,
+      "y" : 222,
+      "z" : 173,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "Wheat",
+      "x" : 245,
+      "y" : 222,
+      "z" : 179,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "BurlyWood",
+      "x" : 222,
+      "y" : 184,
+      "z" : 135,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "Tan",
+      "x" : 210,
+      "y" : 180,
+      "z" : 140,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "RosyBrown",
+      "x" : 188,
+      "y" : 143,
+      "z" : 143,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "SandyBrown",
+      "x" : 244,
+      "y" : 164,
+      "z" : 96,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "Goldenrod",
+      "x" : 218,
+      "y" : 165,
+      "z" : 32,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "DarkGoldenrod",
+      "x" : 184,
+      "y" : 134,
+      "z" : 11,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "Peru",
+      "x" : 205,
+      "y" : 133,
+      "z" : 63,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "Chocolate",
+      "x" : 210,
+      "y" : 105,
+      "z" : 30,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "SaddleBrown",
+      "x" : 139,
+      "y" : 69,
+      "z" : 19,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "Sienna",
+      "x" : 160,
+      "y" : 82,
+      "z" : 45,
+      "label" : "Brown"
+    },
+    {
+      "HTML name" : "Brown",
+      "x" : 165,
+      "y" : 42,
+      "z" : 42,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Maroon",
+      "x" : 128,
+      "y" : 0,
+      "z" : 0,
+      "label" : "Red"
+    },
+    {
+      "HTML name" : "DarkOliveGreen",
+      "x" : 85,
+      "y" : 107,
+      "z" : 47,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "Olive",
+      "x" : 128,
+      "y" : 128,
+      "z" : 0,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "OliveDrab",
+      "x" : 107,
+      "y" : 142,
+      "z" : 35,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "YellowGreen",
+      "x" : 154,
+      "y" : 205,
+      "z" : 50,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "LimeGreen",
+      "x" : 50,
+      "y" : 205,
+      "z" : 50,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "Lime",
+      "x" : 0,
+      "y" : 255,
+      "z" : 0,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "LawnGreen",
+      "x" : 124,
+      "y" : 252,
+      "z" : 0,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "Chartreuse",
+      "x" : 127,
+      "y" : 255,
+      "z" : 0,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "GreenYellow",
+      "x" : 173,
+      "y" : 255,
+      "z" : 47,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "SpringGreen",
+      "x" : 0,
+      "y" : 255,
+      "z" : 127,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "MediumSpringGreen",
+      "x" : 0,
+      "y" : 250,
+      "z" : 154,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "LightGreen",
+      "x" : 144,
+      "y" : 238,
+      "z" : 144,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "PaleGreen",
+      "x" : 152,
+      "y" : 251,
+      "z" : 152,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "DarkSeaGreen",
+      "x" : 143,
+      "y" : 188,
+      "z" : 143,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "MediumAquamarine",
+      "x" : 102,
+      "y" : 205,
+      "z" : 170,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "MediumSeaGreen",
+      "x" : 60,
+      "y" : 179,
+      "z" : 113,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "SeaGreen",
+      "x" : 46,
+      "y" : 139,
+      "z" : 87,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "ForestGreen",
+      "x" : 34,
+      "y" : 139,
+      "z" : 34,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "Green",
+      "x" : 0,
+      "y" : 128,
+      "z" : 0,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "DarkGreen",
+      "x" : 0,
+      "y" : 100,
+      "z" : 0,
+      "label" : "Green"
+    },
+    {
+      "HTML name" : "Aqua",
+      "x" : 0,
+      "y" : 255,
+      "z" : 255,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "Cyan",
+      "x" : 0,
+      "y" : 255,
+      "z" : 255,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "LightCyan",
+      "x" : 224,
+      "y" : 255,
+      "z" : 255,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "PaleTurquoise",
+      "x" : 175,
+      "y" : 238,
+      "z" : 238,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "Aquamarine",
+      "x" : 127,
+      "y" : 255,
+      "z" : 212,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "Turquoise",
+      "x" : 64,
+      "y" : 224,
+      "z" : 208,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "MediumTurquoise",
+      "x" : 72,
+      "y" : 209,
+      "z" : 204,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "DarkTurquoise",
+      "x" : 0,
+      "y" : 206,
+      "z" : 209,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "LightSeaGreen",
+      "x" : 32,
+      "y" : 178,
+      "z" : 170,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "CadetBlue",
+      "x" : 95,
+      "y" : 158,
+      "z" : 160,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "DarkCyan",
+      "x" : 0,
+      "y" : 139,
+      "z" : 139,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "Teal",
+      "x" : 0,
+      "y" : 128,
+      "z" : 128,
+      "label" : "Cyan"
+    },
+    {
+      "HTML name" : "LightSteelBlue",
+      "x" : 176,
+      "y" : 196,
+      "z" : 222,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "PowderBlue",
+      "x" : 176,
+      "y" : 224,
+      "z" : 230,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "LightBlue",
+      "x" : 173,
+      "y" : 216,
+      "z" : 230,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "SkyBlue",
+      "x" : 135,
+      "y" : 206,
+      "z" : 235,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "LightSkyBlue",
+      "x" : 135,
+      "y" : 206,
+      "z" : 250,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "DeepSkyBlue",
+      "x" : 0,
+      "y" : 191,
+      "z" : 255,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "DodgerBlue",
+      "x" : 30,
+      "y" : 144,
+      "z" : 255,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "CornflowerBlue",
+      "x" : 100,
+      "y" : 149,
+      "z" : 237,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "SteelBlue",
+      "x" : 70,
+      "y" : 130,
+      "z" : 180,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "RoyalBlue",
+      "x" : 65,
+      "y" : 105,
+      "z" : 225,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "Blue",
+      "x" : 0,
+      "y" : 0,
+      "z" : 255,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "MediumBlue",
+      "x" : 0,
+      "y" : 0,
+      "z" : 205,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "DarkBlue",
+      "x" : 0,
+      "y" : 0,
+      "z" : 139,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "Navy",
+      "x" : 0,
+      "y" : 0,
+      "z" : 128,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "MidnightBlue",
+      "x" : 25,
+      "y" : 25,
+      "z" : 112,
+      "label" : "Blue"
+    },
+    {
+      "HTML name" : "Lavender",
+      "x" : 230,
+      "y" : 230,
+      "z" : 250,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Thistle",
+      "x" : 216,
+      "y" : 191,
+      "z" : 216,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Plum",
+      "x" : 221,
+      "y" : 160,
+      "z" : 221,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Violet",
+      "x" : 238,
+      "y" : 130,
+      "z" : 238,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Orchid",
+      "x" : 218,
+      "y" : 112,
+      "z" : 214,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Fuchsia",
+      "x" : 255,
+      "y" : 0,
+      "z" : 255,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Magenta",
+      "x" : 255,
+      "y" : 0,
+      "z" : 255,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "MediumOrchid",
+      "x" : 186,
+      "y" : 85,
+      "z" : 211,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "MediumPurple",
+      "x" : 147,
+      "y" : 112,
+      "z" : 219,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "BlueViolet",
+      "x" : 138,
+      "y" : 43,
+      "z" : 226,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "DarkViolet",
+      "x" : 148,
+      "y" : 0,
+      "z" : 211,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "DarkOrchid",
+      "x" : 153,
+      "y" : 50,
+      "z" : 204,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "DarkMagenta",
+      "x" : 139,
+      "y" : 0,
+      "z" : 139,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Purple",
+      "x" : 128,
+      "y" : 0,
+      "z" : 128,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "Indigo",
+      "x" : 75,
+      "y" : 0,
+      "z" : 130,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "DarkSlateBlue",
+      "x" : 72,
+      "y" : 61,
+      "z" : 139,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "RebeccaPurple",
+      "x" : 102,
+      "y" : 51,
+      "z" : 153,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "SlateBlue",
+      "x" : 106,
+      "y" : 90,
+      "z" : 205,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "MediumSlateBlue",
+      "x" : 123,
+      "y" : 104,
+      "z" : 238,
+      "label" : "Purple/Violet/Magenta"
+    },
+    {
+      "HTML name" : "White",
+      "x" : 255,
+      "y" : 255,
+      "z" : 255,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "Snow",
+      "x" : 255,
+      "y" : 250,
+      "z" : 250,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "Honeydew",
+      "x" : 240,
+      "y" : 255,
+      "z" : 240,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "MintCream",
+      "x" : 245,
+      "y" : 255,
+      "z" : 250,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "Azure",
+      "x" : 240,
+      "y" : 255,
+      "z" : 255,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "AliceBlue",
+      "x" : 240,
+      "y" : 248,
+      "z" : 255,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "GhostWhite",
+      "x" : 248,
+      "y" : 248,
+      "z" : 255,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "WhiteSmoke",
+      "x" : 245,
+      "y" : 245,
+      "z" : 245,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "Seashell",
+      "x" : 255,
+      "y" : 245,
+      "z" : 238,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "Beige",
+      "x" : 245,
+      "y" : 245,
+      "z" : 220,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "OldLace",
+      "x" : 253,
+      "y" : 245,
+      "z" : 230,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "FloralWhite",
+      "x" : 255,
+      "y" : 250,
+      "z" : 240,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "Ivory",
+      "x" : 255,
+      "y" : 255,
+      "z" : 240,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "AntiqueWhite",
+      "x" : 250,
+      "y" : 235,
+      "z" : 215,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "Linen",
+      "x" : 250,
+      "y" : 240,
+      "z" : 230,
+      "label" : "White"
+    },
+    {
+      "HTML name" : "LavenderBlush",
+      "x" : 255,
+      "y" : 240,
+      "z" : 245,
+      "label" : "Pink"
+    },
+    {
+      "HTML name" : "MistyRose",
+      "x" : 255,
+      "y" : 228,
+      "z" : 225,
+      "label" : "Pink"
+    },
+    {
+      "HTML name" : "Gainsboro",
+      "x" : 220,
+      "y" : 220,
+      "z" : 220,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "LightGrey",
+      "x" : 211,
+      "y" : 211,
+      "z" : 211,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "Silver",
+      "x" : 192,
+      "y" : 192,
+      "z" : 192,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "DarkGray",
+      "x" : 169,
+      "y" : 169,
+      "z" : 169,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "Gray",
+      "x" : 128,
+      "y" : 128,
+      "z" : 128,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "DimGray",
+      "x" : 105,
+      "y" : 105,
+      "z" : 105,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "LightSlateGray",
+      "x" : 119,
+      "y" : 136,
+      "z" : 153,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "SlateGray",
+      "x" : 112,
+      "y" : 128,
+      "z" : 144,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "DarkSlateGray",
+      "x" : 47,
+      "y" : 79,
+      "z" : 79,
+      "label" : "Gray/Black"
+    },
+    {
+      "HTML name" : "Black",
+      "x" : 0,
+      "y" : 0,
+      "z" : 0,
+      "label" : "Gray/Black"
+    }
+  ]

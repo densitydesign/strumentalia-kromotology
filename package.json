@@ -12,6 +12,7 @@
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "lwip": "0.0.8",
+    "mongodb": "^2.1.6",
     "node-kmeans": "0.0.1",
     "request": "^2.67.0"
   }
