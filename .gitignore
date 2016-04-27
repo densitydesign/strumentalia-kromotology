@@ -40,7 +40,7 @@ node_modules
 .idea
 
 #compiled files
-*.js
+fontend/*.js
 *.map
 
 UI
